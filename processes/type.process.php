@@ -1,13 +1,13 @@
 <?php 
-    require("./classes/dbh.class.php");
-    require("./classes/types.class.php");
+    require("../classes/dbh.class.php");
+    require("../classes/types.class.php");
 
   $types = new Types();
   
   if(isset($_POST['submit'])) {
-    $typeName = $_POST['type-title'];
-    $typeContent = $_POST['type-content'];
-    $typeAuthor = $_POST['type-author'];
+    $typeName = $_POST['typeName'];
+    $typeContent = $_POST['typeContent'];
+    $typeAuthor = $_POST['typeAuthor'];
   
     $types->addType($typeName, $typeContent, $typeAuthor);
   
@@ -21,9 +21,9 @@
   } else if($_GET['send'] === 'update') {
     $id = $_GET['id'];
 
-    $typeName = $_POST['type-title'];
-    $typeContent = $_POST['type-content'];
-    $typeAuthor = $_POST['type-author'];
+    $typeName = $_POST['typeName'];
+    $typeContent = $_POST['typeContent'];
+    $typeAuthor = $_POST['typeAuthor'];
 
     $types->updateType($id, $typeName, $typeContent, $typeAuthor);
 

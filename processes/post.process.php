@@ -1,6 +1,6 @@
 <?php 
-    require("./classes/dbh.class.php");
-    require("./classes/posts.class.php");
+    require("../classes/dbh.class.php");
+    require("../classes/posts.class.php");
 
   $posts = new Posts();
   

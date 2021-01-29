@@ -21,7 +21,7 @@
 
       <div class="modal-body">
       <!-- form input -->
-        <form method="POST" action="post.process.php">
+        <form method="POST" action="processes/post.process.php">
           <div class="form-group">
             <label>Title: </label>
             <input class="form-control" name="post-title" type="text" required>
@@ -59,7 +59,7 @@
 
       <div class="modal-body">
       <!-- form input -->
-        <form method="POST" action="post.process.php">
+        <form method="POST" action="processes/post.process.php">
           <div class="form-group">
             <label>Type Name: </label>
             <input class="form-control" name="post-title" type="text" required>
@@ -94,7 +94,7 @@
               <p class='card-text'><?= $post['body'] ?></p>
               <h6 class='card-subtitle text-muted text-right'>Author: <?= $post['author'] ?></h6>
               <a  href='editForm.php?id=<?= $post['id'] ?>' class='btn btn-warning'>Edit</a>
-              <a href='post.process.php?send=del&id=<?=$post['id']?>' class='btn btn-danger'>Delete</a>
+              <a href='processes/post.process.php?send=del&id=<?=$post['id']?>' class='btn btn-danger'>Delete</a>
             </div>
           </div>
         </div>
