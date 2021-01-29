@@ -11,30 +11,30 @@ class Types extends Dbh {
     };
   }
 
-  public function addType($title, $body, $author) {
-    $sql = "INSERT INTO posts(title, body, author) VALUES (?, ?, ?)";
+  public function addType($typeName, $typeContent, $typeAuthor) {
+    $sql = "INSERT INTO types(typeName, typeContent, typeAuthor) VALUES (?, ?, ?)";
     $stmt = $this->connect()->prepare($sql);
-    $stmt->execute([$title, $body, $author]);
+    $stmt->execute([$typeName, $typeContent, $typeAuthor]);
   }
 
-  public function editType($id) {
-    $sql = "SELECT * FROM posts WHERE id = ?";
+  public function editType($typeID) {
+    $sql = "SELECT * FROM types WHERE typeID = ?";
     $stmt = $this->connect()->prepare($sql);
-    $stmt->execute([$id]);
+    $stmt->execute([$typeID]);
     $result = $stmt->fetch();
 
     return $result;
   }
 
-  public function updateType($id, $title, $body, $author) {
-    $sql = "UPDATE posts SET title = ?, body = ?, author = ? WHERE id = ?";
+  public function updateType($id, $typeName, $typeContent, $typeAuthor) {
+    $sql = "UPDATE types SET typeName = ?, typeContent = ?, typeAuthor = ? WHERE typeID = ?";
     $stmt = $this->connect()->prepare($sql);
-    $stmt->execute([$title, $body, $author, $id]);
+    $stmt->execute([$typeName, $typeContent, $typeAuthor, $typeID]);
   }
 
-  public function delType($id) {
-    $sql = "DELETE FROM posts WHERE id = ?";
+  public function delType($typeID) {
+    $sql = "DELETE FROM types WHERE typeID = ?";
     $stmt = $this->connect()->prepare($sql);
-    $stmt->execute([$id]);
+    $stmt->execute([$typeID]);
   }
 }

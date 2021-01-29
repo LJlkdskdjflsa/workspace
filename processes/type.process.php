@@ -14,12 +14,12 @@
     header("location: {$_SERVER['HTTP_ORIGIN']}/workspace/index.php?status=added");
   
   } else if($_GET['send'] === 'del') {
-    $id = $_GET['id'];
-    $Tests->delType($id);
+    $typeID = $_GET['typeID'];
+    $types->delType($typeID);
 
     header("location: {$_SERVER['HTTP_ORIGIN']}/workspace/index.php?status=deleted");
   } else if($_GET['send'] === 'update') {
-    $id = $_GET['id'];
+    $id = $_GET['typeID'];
 
     $typeName = $_POST['typeName'];
     $typeContent = $_POST['typeContent'];

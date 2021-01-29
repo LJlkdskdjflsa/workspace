@@ -2,9 +2,10 @@
   require_once("./templates/header.php");
   require("./classes/dbh.class.php");
   require("./classes/posts.class.php");
+  require("./classes/types.class.php");
 ?>
 <div class="text-left">
-  <button class="my-5 btn btn-warning" data-toggle="modal" data-target="#addPostModal">Craete Type</button>
+  <button class="my-5 btn btn-warning" data-toggle="modal" data-target="#addTypeModal">Craete Type</button>
   <button class="my-5 btn btn-primary" data-toggle="modal" data-target="#addPostModal">Craete Post</button>
 </div>
 
@@ -59,22 +60,22 @@
 
       <div class="modal-body">
       <!-- form input -->
-        <form method="POST" action="processes/post.process.php">
+        <form method="POST" action="processes/type.process.php">
           <div class="form-group">
             <label>Type Name: </label>
-            <input class="form-control" name="post-title" type="text" required>
+            <input class="form-control" name="typeName" type="text" required>
           </div>
           <div class="form-group">
             <label>Type Content: </label>
-            <textarea class="form-control"  name="post-content" required></textarea>
+            <textarea class="form-control"  name="typeContent" required></textarea>
           </div>
           <div class="form-group">
             <label>Author: </label>
-            <input class="form-control" name="post-author" type="text" required>
+            <input class="form-control" name="typeAuthor" type="text" required>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" name="submit" class="btn btn-primary">Add post</button>
+            <button type="submit" name="submit" class="btn btn-primary">Add Type</button>
           </div>
         </form>
       </div>
@@ -83,26 +84,28 @@
 </div>
 <!-- Add New Type Modal Close-->
 
+<!--show type-->
 <div class="row">
-  <?php $posts = new Posts(); ?>
-    <?php if($posts->getPost()) : ?>
-      <?php foreach($posts->getPost() as $post) : ?>
+  <?php $types = new Types(); ?>
+    <?php if($types->getType()) : ?>
+      <?php foreach($types->getType() as $type) : ?>
         <div class="col-md-6 mt-4">
           <div class="card">
             <div class="card-body">
-              <h5 class='card-title'><?= $post['title'] ?></h5>
-              <p class='card-text'><?= $post['body'] ?></p>
-              <h6 class='card-subtitle text-muted text-right'>Author: <?= $post['author'] ?></h6>
-              <a  href='editForm.php?id=<?= $post['id'] ?>' class='btn btn-warning'>Edit</a>
-              <a href='processes/post.process.php?send=del&id=<?=$post['id']?>' class='btn btn-danger'>Delete</a>
+              <h5 class='card-title'><?= $type['typeName'] ?></h5>
+              <!--
+              <p class='card-text'><?= $type['typeContent'] ?></p>
+              <h6 class='card-subtitle text-muted text-right'>Author: <?= $type['typeAuthor'] ?></h6>
+              -->
+              <a  href='editType.php?id=<?= $type['typeID'] ?>' class='btn btn-warning'>Edit</a>
+              <a href='processes/type.process.php?send=del&typeID=<?=$type['typeID']?>' class='btn btn-danger'>Delete</a>
             </div>
           </div>
         </div>
       <?php endforeach ?>
     <?php else : ?>
-      <p class='mt-5 mx-auto'>Post is empty...</p>
-    <?php endif?>
-          
+      <p class='mt-5 mx-auto'>There is no type</p>
+    <?php endif?>  
 </div>
 
 <?php 
