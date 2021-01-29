@@ -5,27 +5,29 @@
   $posts = new Posts();
   
   if(isset($_POST['submit'])) {
-    $title = $_POST['post-title'];
-    $body = $_POST['post-content'];
-    $author = $_POST['post-author'];
+    $postName = $_POST['postName'];
+    $postContent = $_POST['postContent'];
+    $postAuthor = $_POST['postAuthor'];
+    $postType = $_POST['postType'];
   
-    $posts->addPost($title, $body, $author);
+    $posts->addPost($postName, $postContent, $postAuthor,$postType);
   
     header("location: {$_SERVER['HTTP_ORIGIN']}/workspace/index.php?status=added");
   
   } else if($_GET['send'] === 'del') {
-    $id = $_GET['id'];
-    $posts->delPost($id);
+    $postID = $_GET['postID'];
+    $posts->delPost($postID);
 
     header("location: {$_SERVER['HTTP_ORIGIN']}/workspace/index.php?status=deleted");
   } else if($_GET['send'] === 'update') {
-    $id = $_GET['id'];
+    $postID = $_GET['postID'];
 
-    $title = $_POST['post-title'];
-    $body = $_POST['post-content'];
-    $author = $_POST['post-author'];
+    $postName = $_POST['postName'];
+    $postContent = $_POST['postContent'];
+    $postAuthor = $_POST['postAuthor'];
+    $postType = $_POST['postType'];
 
-    $posts->updatePost($id, $title, $body, $author);
+    $posts->updatePost($postID, $postName, $postContent, $postAuthor,$postType);
 
     header("location: {$_SERVER['HTTP_ORIGIN']}/workspace/index.php?status=updated");
   }

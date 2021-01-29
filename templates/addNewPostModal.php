@@ -1,4 +1,3 @@
-
 <!-- Add New Post Modal -->
 <div class="modal fade" id="addPostModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -9,21 +8,18 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-
       <div class="modal-body">
       <!-- form input -->
         <form method="POST" action="processes/post.process.php">
           <div class="form-group">
             <label>Title: </label>
-            <input class="form-control" name="post-title" type="text" required>
-          </div>
-          <div class="form-group">
+            <input class="form-control" name="postName" type="text" required>
             <label>Content: </label>
-            <textarea class="form-control"  name="post-content" required></textarea>
-          </div>
-          <div class="form-group">
+            <textarea class="form-control"  name="postContent" required></textarea>
             <label>Author: </label>
-            <input class="form-control" name="post-author" type="text" required>
+            <input class="form-control" name="postAuthor" type="text" required>
+            <label>Type: </label>
+            <input class="form-control" name="postType" type="text" required>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

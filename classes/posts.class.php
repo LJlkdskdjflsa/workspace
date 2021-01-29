@@ -11,30 +11,30 @@ class Posts extends Dbh {
     };
   }
 
-  public function addPost($title, $body, $author) {
-    $sql = "INSERT INTO posts(title, body, author) VALUES (?, ?, ?)";
+  public function addPost($postName, $postContent, $postAuthor,$postType) {
+    $sql = "INSERT INTO posts(postName, postContent, postAuthor,postType) VALUES (?, ?, ?,?)";
     $stmt = $this->connect()->prepare($sql);
-    $stmt->execute([$title, $body, $author]);
+    $stmt->execute([$postName, $postContent, $postAuthor, $postType]);
   }
 
-  public function editPost($id) {
-    $sql = "SELECT * FROM posts WHERE id = ?";
+  public function editPost($postID) {
+    $sql = "SELECT * FROM posts WHERE postID = ?";
     $stmt = $this->connect()->prepare($sql);
-    $stmt->execute([$id]);
+    $stmt->execute([$postID]);
     $result = $stmt->fetch();
 
     return $result;
   }
 
-  public function updatePost($id, $title, $body, $author) {
-    $sql = "UPDATE posts SET title = ?, body = ?, author = ? WHERE id = ?";
+  public function updatePost($postID, $postName, $postContent, $postAuthor,$postType) {
+    $sql = "UPDATE posts SET postName = ?, postContent = ?, postAuthor = ?, postType = ? WHERE postID = ?";
     $stmt = $this->connect()->prepare($sql);
-    $stmt->execute([$title, $body, $author, $id]);
+    $stmt->execute([$postName, $postContent, $postAuthor,$postType, $postID]);
   }
 
-  public function delPost($id) {
-    $sql = "DELETE FROM posts WHERE id = ?";
+  public function delPost($postID) {
+    $sql = "DELETE FROM posts WHERE postID = ?";
     $stmt = $this->connect()->prepare($sql);
-    $stmt->execute([$id]);
+    $stmt->execute([$postID]);
   }
 }
